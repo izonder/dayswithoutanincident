@@ -1,0 +1,92 @@
+.display {
+    width: 400px;
+    height: 150px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -75px -200px;
+    background: url(img/sprite.png) 0 -250px;
+
+    &__led {
+        width: 400px;
+        height: 150px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -75px -200px;
+        background: url(img/sprite.png) 0 -650px;
+    }
+
+    &__shine {
+        width: 400px;
+        height: 150px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -75px -200px;
+        background: url(img/sprite.png) 0 -450px;
+        z-index: 1000;
+    }
+
+    &__digit-large {
+        width: 70px;
+        height: 112px;
+        position: absolute;
+        float: left;
+        background: url(img/sprite.png) -560px 0;
+
+        &--1 {
+            margin: 20px 29px;
+        }
+
+        &--2 {
+            margin: 20px 118px;
+        }
+    }
+
+    &__digit-small {
+        width: 35px;
+        height: 57px;
+        position: absolute;
+        float: left;
+        background: url(img/sprite.png) -280px -150px;
+
+        &--1 {
+            margin: 74px 252px;
+        }
+
+        &--2 {
+            margin: 74px 298px;
+        }
+    }
+
+    &__days {
+        width: 20px;
+        height: 30px;
+        position: absolute;
+        float: left;
+        margin: 102px 198px;
+        background: url(img/sprite.png) -560px -150px;
+        z-index: 10;
+    }
+
+    &__hours {
+        width: 20px;
+        height: 30px;
+        position: absolute;
+        float: left;
+        margin: 103px 343px;
+        background: url(img/sprite.png) -630px -150px;
+        z-index: 10;
+    }
+
+    &__blink {
+        width: 7px;
+        height: 48px;
+        background-image: url(img/dots.gif);
+        position: absolute;
+        float: left;
+        left: 231px;
+        bottom: 19px;
+    }
+}

@@ -1,0 +1,4 @@
+/docs/**/*
+/_bak/**/*
+/nginx/**/*
+/node_modules/**/*

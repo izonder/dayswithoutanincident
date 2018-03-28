@@ -1,0 +1,17 @@
+.button {
+    width: 220px;
+    height: 40px;
+    position: absolute;
+    top: 320px;
+    left: 170px;
+    background-color: #dc0000;
+    text-align: center;
+    color: #0f0f0f;
+    font: bold 21px helvetica, arial, sans-serif;
+    border: 1px solid #232323;
+    cursor: pointer;
+
+    &--active {
+        background-color: #119db1;
+    }
+}
