@@ -1,5 +1,7 @@
 # Days without an incident
 
+![dayswithoutanincident](https://user-images.githubusercontent.com/1416966/38036492-1a8d38ac-32a7-11e8-9157-039b1a18bb04.png)
+
 Inspired by `http://dayswithoutanincident.com` but absolutely static.
 
 ## How to
