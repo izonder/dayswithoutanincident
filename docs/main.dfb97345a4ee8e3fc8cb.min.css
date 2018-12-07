@@ -4,6 +4,7 @@
 
 body {
   background-color: #0f0f0f; }
+
 .container {
   width: 560px;
   height: 400px;
@@ -20,6 +21,7 @@ body {
   font-weight: bold;
   text-align: center;
   margin-top: 50px; }
+
 .display {
   width: 400px;
   height: 150px;
@@ -89,6 +91,7 @@ body {
     float: left;
     left: 231px;
     bottom: 19px; }
+
 .button {
   width: 220px;
   height: 40px;
@@ -104,4 +107,5 @@ body {
   .button--active {
     background-color: #119db1; }
 
-/*# sourceMappingURL=main.73224f0d0396c65612be.min.css.map*/
+
+/*# sourceMappingURL=main.dfb97345a4ee8e3fc8cb.min.css.map*/

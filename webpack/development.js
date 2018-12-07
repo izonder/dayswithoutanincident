@@ -4,17 +4,17 @@ const path = require('path'),
     HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+    mode: 'development',
     devtool: 'inline-source-map',
 
     entry: [
-        'babel-polyfill',
-        'react-hot-loader/patch',
+        '@babel/polyfill',
         path.resolve('./src/index')
     ],
 
     output: {
         filename: '[name].[hash].min.js',
-        path: path.resolve('./docs'),
+        path: path.resolve('./dist'),
         publicPath: '/'
     },
 
@@ -23,10 +23,6 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader'
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
             },
             {
                 test: /\.(jpg|png|gif|mp3|aac|ogg)$/,
@@ -92,7 +88,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve('./src/assets/index.html'),
             favicon: path.resolve('./src/assets/favicon.ico'),
-            filename: path.resolve('./docs/index.html')
+            filename: path.resolve('./dist/index.html')
         }),
         new webpack.DefinePlugin({
             'process.env': {
@@ -103,7 +99,7 @@ module.exports = {
     ],
 
     devServer: {
-        contentBase: path.resolve('./docs'),
+        contentBase: path.resolve('./dist'),
         host: '0.0.0.0',
         port: 9000,
         publicPath: '/',

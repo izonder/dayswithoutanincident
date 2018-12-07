@@ -1,15 +1,17 @@
 const path = require('path'),
     webpack = require('webpack'),
     autoprefixer = require('autoprefixer'),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    MiniCssExtractPlugin = require('mini-css-extract-plugin'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
-    CleanWebpackPlugin = require('clean-webpack-plugin');
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
+    UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
+    mode: 'production',
     devtool: 'source-map',
 
     entry: [
-        'babel-polyfill',
+        '@babel/polyfill',
         path.resolve('./src/index')
     ],
 
@@ -24,10 +26,6 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader'
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader'
             },
             {
                 test: /\.(jpg|png|gif|mp3|aac|ogg)$/,
@@ -50,26 +48,24 @@ module.exports = {
             },
             {
                 test: /\.(scss|css)$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: 'style-loader',
-                    use: [
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                plugins: () => [
-                                    autoprefixer()
-                                ]
-                            }
-                        },
-                        'sass-loader'
-                    ]
-                })
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: () => [
+                                autoprefixer()
+                            ]
+                        }
+                    },
+                    'sass-loader'
+                ]
             }
         ]
     },
@@ -110,14 +106,23 @@ module.exports = {
                 'DEV_TOOL': JSON.stringify('disable')
             }
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            beautify: false,
-            mangle: false,
-            compress: true,
-            comments: false
-        }),
-        new ExtractTextPlugin('[name].[md5:contenthash:hex:20].min.css')
-    ]
+        new MiniCssExtractPlugin({filename: '[name].[hash].min.css'})
+    ],
+
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                sourceMap: true,
+                uglifyOptions: {
+                    mangle: false,
+                    compress: true,
+                    output: {
+                        beautify: false,
+                        comments: false
+                    }
+                }
+            })
+        ]
+    }
 };
 
